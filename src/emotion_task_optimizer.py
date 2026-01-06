@@ -13,7 +13,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
-from cv_emotion_detector import detect_face_emotion
 
 
 # Loading dataset from system path
@@ -150,17 +149,4 @@ print("\nPredicted Emotion:", pred_emotion)
 print("Recommended Task:", task)
 
 
-
-# Emotion Detection from Image using CV
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-image_path = os.path.join(BASE_DIR, "..", "images", "employee_face.jpg")
-
-visual_emotion = detect_face_emotion(image_path)
-
-print("\nVisual Emotion Detected (CV):", visual_emotion)
-
-if visual_emotion in ["happy", "motivated", "neutral", "stressed", "angry"]:
-    print("Recommended Task (CV-based):", recommend_task(visual_emotion))
-else:
-    print("CV-based task recommendation skipped.")
 
